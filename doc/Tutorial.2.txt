@@ -1,0 +1,15 @@
+Tutorial 2 : Tools
+
+Compiler:
+Some IDEs ship with a compiler (Kdevelop, Xcode, QTCreator, etc. do not; they only use the compiler on your system). The IDEs listed above are typically run on Unix/Linx/Mac operating systems and they do this because the user may have a preference which compiler they use. However if you're using Microsoft (a very good chance), Visual studio does ship with a compiler.
+
+Build System:
+You may have never heard of a build system but they are extremely powerful and used quite a bit in development done on other operating systems like Unix/BSD/Linux/Mac OSX. We will be using the most popular; it is called CMake and it is very easy to use.
+
+The basic overview of a build system like CMake is that you specify your project structure/files and you tell it to build a "makefile" (of sorts) for the build system you'd like. However, most IDEs support CMake and it's files outright so there isn't necessarly a need to `generate a ``make file of sorts''' (VS 2017 supports the use of a CMake files for projects). 
+
+You may be asking yourself why you'd use a build system if you're always going to use Visual Studio, and I'd tell you that using a build system--at least just this once-- will teach you things/steps about the compiling process you may not have known. After this tutorial you can generate your project directories with a Visual Studio Wizard but for now please bear with me; you may really like CMake. You can do some extraordinary things with the tool.
+
+Version Control:
+Later, we will introduce Git and a host like Github.
+

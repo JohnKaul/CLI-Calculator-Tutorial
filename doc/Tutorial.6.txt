@@ -1,0 +1,25 @@
+Tutorial 6: Redy, Set, Go!
+
+Let's create a program.
+
+Place the CMakeLists.txt file at the root of our project and the main.cpp in the src folder.
+                ...
+                |
+                +------ CLI Calculator
+                        |
+                        +------ CMakeLists.txt
+                        |
+                        +------ src
+                        |       |
+                        |       ------- main.cpp
+                        ...
+
+We can now 
+
+We need to take a quick break and talk about how you interact with git; interaction with git is simple and straight-forward(ish) but it may seem a bit foriegn so a few quick notes should set you on the right path.
+
+After every edit you COMMIT your changes to git.
+        This can be one file at a time or two files in the case of a header/impl file change. I do both, if the change requires me to change both header and impl file I COMMIT both files at the same time but I strive to commit each change, not many at once.
+It is good pratice to have a standard (tepmplate) commit style.
+        I like to prefix my commit statements with the file(s) I am commiting.
+        -e.g. "main.cpp: Fixed spelling error."

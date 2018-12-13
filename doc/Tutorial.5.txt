@@ -1,0 +1,43 @@
+Tutorial 5: Mind your tracks.
+
+This lesson will focus on using version control -i.e. how to track your changes and additions. 
+
+Git is a very popular version control software program and GitHub is a socal hub for Git users but isnt the only one (Visual Studio Online and BitBucket are others). However, git is just as happy to be a repository on your PC/Network/etc. as it is located on a cloud server but that is because Git is just something that keeps track of changes to your files. 
+
+10,000 Foot overview:
+1. You create a central repository somewhere where it will be accessable to everyone. Or, if it is just you, place the repository somewhere where you know it will be backed up.
+2. You CLONE (copy) that repository and tell Git which files you'd like it to "watch".
+3. Work as normal.
+4. CHECKIN any changes you've made along with brief descriptions for those changes.
+
+Step 3 & 4 sort of dictate your typical work flow and it is definatly worth talking about.
+
+Workflow:
+I won't get into the different types of workflow methods at this time but I will guide these lessons down a proper path for you to expand upon as you get more comfortable with using Git.
+
+First steps.
+The first step is #1 above in our overview so please pick a place on your harddrive to host repositories. 
+
+I am a Unix user so my “home directory” is equivalent to the “My Documents” folder in MS Windows and this where I choose to create a folder to host all of my Git repositories. This location is not to be confused with our project direcory where we host our projects. We will never be navigating into this folder--in fact you wouldnt be able to make heads or tails of the files in the directories once we get set up; think of this folder like a “junk drawer” where we place all of our project repositories in. 
+
+This is an example of the workflow methods I was mentioned above, in that this `junk drawer' is a folder you can backup quickly and easily. This folder will be essentailly a database in raw form, from which many copies of your project can be made. Also, many IDEs (Visual Studio as well) have Git intergration and some have even made the ussage of Git overly complicated so I want to you to at least use the command line for the first phases of setting up your Git repository. After we get the initial repository set up you can--although it will be more difficult--switch to your IDE's git interface.
+
+The location of my "repository store" is in my `home directory' and called somthing like: ".git-repositories" (the DOT at the begining tells Unix to hide the directory from normal view and this will not work in MS Windows). I will assume you do not already have a `repository store' folder so we can create this folder, at any location and name you choose; it is a simple/normal folder.
+
+Once you have that folder created I'll need you to open a command prompt (shell for those *nix users) and navigate to that location.
+    You "change directories" with the CD command: $> cd <location>
+
+Now that we are inside that `repository store' directory we can create a new project. Let's call it: CLI-Calculator. We create the directory with the MKDIR command: $> mkdir CLI-Calculator
+    $> mkdir CLI-Calculator
+    $> cd CLI-Calculator
+
+Let's create a "bare git repository" (feel free to google that).
+    $> git init --bare .
+
+Since we have the command line (shell) open...
+    $> cd <location>\<to>\<programming>\<direcotry>
+    $> git clone <repository store location>\CLI-Calculator
+    $> cd CLI-Calculator
+    $> mkdir src
+With these few commands we just cloned the project into our project working directory from our `repository store' and created a folder for us to start adding our code to. 
+

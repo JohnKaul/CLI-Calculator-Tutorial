@@ -1,0 +1,69 @@
+Tutorial 3: Code up an interface
+
+Next we'll code up an interface to this calculator. You may think the command line isn't an interface but it is. How you call our program and what our program returns is an interface for how we'd like our program to interact with the user and other programs. In old Unix style programs interacted via pipes ('|') meaning that the output of one program was the input to another. This was a huge time saver because commands and programs could be piped thus preforming complex operations with a simple command line statement. GUIs have obviously dominated and are the new norm. However, since this is an introduction into programming--and more specifically really about Object Orientated Programming--we can just make the simple decision to focus more on the actual guts of our software and not so much on the fact that it only uses a command line for it's interface (-i.e. accept the "simpler" interface and get on with the learning). 
+
+In C and C++ we have a main function and it is our interface. This is the portion of code that the end-user interacts with initially.
+Our main: 
+int main(int argc, const char *argv[])
+{
+    return 0;
+} ///:~
+
+Explanation:
+The first part is `int main' and the only part that should be confusing is the `int' portion. It tells you/the compiler that this function will "return" and integer. This is why later down towards the end that you see the statement `return 0;' This means just that; return a zero. 
+
+The next part--between the parentheses is the argument list. `argc' is of type `int' and is the number of arguments supplied/given to our main. `argv[]' is an array of characters.
+
+The bracket ('{') is the start of a block of code and the close bracket ('}') is the end.
+
+The last bit after the close bracket is a personal habit of mine--which I have included here in case you see it often, later--is just a visual clue that I have reached the end of an interface. It means nothing to the compiler, or our program, it is just a personal preference thing/quirk that I do.
+
+Next we need to talk about headers and code documentation. You can create a header at any location of your program and here are a few examples.
+
+Create a comment/header after the initial opening statement:
+int main(int argc, const char *argv[])
+    /*
+     * BRIEF
+     *       Entry point for the binary
+     *
+     * PARAM
+     *       argc
+     *               parameter counter
+     *       argv[]
+     *               parameter array
+     *
+     * AUTHOR    John Kaul
+     * DATE: 10.19.18 19:40:55
+     *
+     * EXAMPLE
+     */
+{
+
+    return 0;
+} ///:~
+
+Or create one before:
+//----------------------------------------------------------------------
+// BRIEF
+//       Entry point for the binary
+//
+// PARAM
+//       argc
+//               parameter counter
+//       argv[]
+//               parameter array
+//
+// AUTHOR    John Kaul
+// DATE: 10.19.18 19:40:55
+//
+// EXAMPLE
+//----------------------------------------------------------------------
+int main(int argc, const char *argv[])
+{
+    return 0;
+} ///:~
+
+This is mainly personal preference so I wont talk about much other then the two different symbols you will see used. One is the double slash and the other is the combination of a slash and a star. The double slash ('//') is a single line comment where as the slash and star is a multi line comment so you need an open slash and star ('/*') and a close star and slash ('*/').
+
+The other aspect I'd like you to look at the information inside the comment/header. This is very generic and mostly all very useful later so try not to omit much when you develop your own. However, you will see a short-hand version of mine later when we start to develop more code so try to hold your opinions until you start to see more header styles.
+

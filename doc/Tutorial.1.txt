@@ -1,0 +1,48 @@
+Developing a taste for Meat and Potatoes : Tutorial 1 : Scope and Directory
+
+There is a quote from a famous developer that says: "The world doesn't live off jam and fancy perfumes - it lives off bread and meat and potatoes. Nothing changes. All the big fancy stuff is sloppy stuff that crashes. I don't need dancing baloney - I need stuff that works. That's not as pretty, and just as hard." ~ Theo de Raadt
+
+This specific quote comes from a discussion about having release ready code all the time--everyday--but the undertone to this quote was about other companies failure to be able to release on a set schedule because of the fancy "bling" they want in each new release and there is something to say about the strength behind the basics.
+
+I'd like to guide you down the development of a simple calculator tool; this tool will be a simple command line calculator. We will be documenting every (most) aspects of creating this tool and this tutorial will be an introduction into the C based languages (we will be using C/C++ for this simple program).
+
+You will learn:
+* Flexible directory structure.
+* Some basic tools used by all programmers.
+* Simple programming skills/methods.
+* Introduction into low level languages.
+
+Directory structure:
+We need a flexible (professional) directory structure and the following is a copy/abridged/modification of the LLVM directory structure which is by far the best I have ever used/made.
+
+        Why is this important? Keeping things organized will help you understand how your compiler works later and how to add tools to your development.
+
+This is the directory structure we will be using.
+...
+Programming
+        |
+        C++
+        |
+        +------ Projects
+                |
+                +------ include
+                |
+                +------ lib
+                |
+                +------ tools
+                        |
+                        +------ CLI Calculator
+                                |
+                                +------ bin
+                                |
+                                +------ doc
+                                |
+                                +------ src
+                                |       |
+                                |       +------ include
+                                |       |
+                                |       +------ lib
+                                +------ tests
+ 
+Scope: 
+The scope of this calculator will be to parse command line arguments and preform the calculation. This will adjust as we get more complicated.
