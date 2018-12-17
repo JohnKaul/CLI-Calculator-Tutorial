@@ -61,3 +61,30 @@ After every edit you COMMIT your changes to git.
 It is good pratice to have a standard (tepmplate) commit style.
         I like to prefix my commit statements with the file(s) I am commiting.
         -e.g. "main.cpp: Fixed spelling error."
+
+So, after you saved each file (License and the ReadMe) Visual studio should warn you that you have new commits to make. Make a comment -i.e. "Initial commit." and commit each. Once that is done we can now add our main program; add this in the src directory add/commit the file to the git repo (you should now have made three commits).
+
+main.cpp
+***
+// File Last Updated: 12.17.18 13:21:19
+//
+//: CLI-Calculator
+//
+// BY  : John Kaul
+#include <iostream>
+#include <cstdlib>
+
+//----------------------------------------------------------------------
+// Main - CLI-Calculator
+// This is a simple command line calculator tool built durring a tutorial.
+//
+// ARGS
+//      <ARG 1>     :       <ARG 1 DESCRIPTION>
+//----------------------------------------------------------------------
+
+int main(int argc, const char *argv[]) {
+    return 0;
+} ///:~
+***
+
+Build the program.
