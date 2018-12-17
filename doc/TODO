@@ -1,10 +1,19 @@
 [X] Add tut for a simple main
 [X] Add tut for git
+[ ] Add information about downloading and setting up Git/Cmake on Windows.
+[ ] Create a simple arg parser in main (switch statement).
 [ ] Add tut for buffer
 [ ] Add tut for git branches
+        -i.e. Master branch and release branches.
+                +-- master
+                |       |
+                |       +-- release 2
+                |
+                |       |
+                |       +-- release 1
 [ ] Add tut for arg parser
 [ ] Add tut for new main
 [X] Add tut for CMAKE
-[ ] Add tut for github/bitbucket
+[ ] Add tut for github/bitbucket and information about having multiple remote repos
 [ ] Add tut for CMAKE building library
-
+[ ] Attempt CPACK stuff in windows.
