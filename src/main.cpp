@@ -1,29 +1,20 @@
-// File Last Updated: 10.19.18 13:00:54
+// File Last Updated: 12.17.18 13:21:19
 //
-//: argument-parser
+//: CLI-Calculator
 //
-// BY  :
+// BY  : John Kaul
 #include <iostream>
 #include <cstdlib>
 
 //----------------------------------------------------------------------
-// argument parser      This is an argument parser playground.
+// Main - CLI-Calculator
+// This is a simple command line calculator tool built durring a tutorial.
 //
 // ARGS
-//    VARIABLE        :    VARIABLE-DESCRIPTION
+//      <ARG 1>     :       <ARG 1 DESCRIPTION>
 //----------------------------------------------------------------------
 
 int main(int argc, const char *argv[]) {
-//     TSymtab globalArgumentSymtab;
-
-    /*
-    This obviously wont work.
-
-    TSymtabNode *pNode = globalArgumentSymtab.Search( argv[1] );
-    if ( !pNode ) {
-        pNode = globalArgumentSymtab.Enter( argv[1] );
-    }
-*/    
     return 0;
 } ///:~
 
