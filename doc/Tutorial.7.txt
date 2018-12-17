@@ -1,0 +1,12 @@
+Tutorial 7: Choose or perish
+
+In the last 6 tutorials we did a lot of basic setup but now we can finally focus on some doing some coding!
+
+I mentioned that we'll pass arguments to our calculator and it will preform operations on them; this can be done many different ways and only a few methods will offer you the most flexablity when it comes time to add functionality later. Firstly, we need a method to parse out the arguments passed to our program so we can then do stuff. 
+
+I am going to demonstrate a very simple method that we'll outgrow almost immediately. I will do this because this will be a great introduction into the C languages syntax.
+
+
+int main(int argc, const char *argv[]) {
+    return 0;
+} ///:~
