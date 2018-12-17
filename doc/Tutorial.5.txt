@@ -38,6 +38,6 @@ Since we have the command line (shell) open...
     $> cd <location>\<to>\<programming>\<direcotry>
     $> git clone <repository store location>\CLI-Calculator
     $> cd CLI-Calculator
-    $> mkdir src
+    $> mkdir bin doc src
 With these few commands we just cloned the project into our project working directory from our `repository store' and created a folder for us to start adding our code to. 
 
