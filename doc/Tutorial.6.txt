@@ -1,4 +1,4 @@
-Tutorial 6: Redy, Set, Go!
+ Tutorial 6: Ready, Set, Go!
 
 Let's create a program.
 
