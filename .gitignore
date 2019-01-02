@@ -1,0 +1,7 @@
+# Add files that you don't want pushed to the main repository here.
+# These files might be things like config files that store passwords
+# IDE folder/files and other user specific settings or data not needed
+# for the project.
+
+# Visual Studio code settings
+.vscode
