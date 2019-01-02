@@ -46,3 +46,6 @@ Programming
  
 Scope: 
 The scope of this calculator will be to parse command line arguments and preform the calculation. This will adjust as we get more complicated.
+
+Schedule:
+I'm trying to balance a busy work and family life as I type these tutorials so I don't plan on submitting these on a daily basis but I do hope these tutorials will start to take on a life of they're own as we get the introductions over with.
