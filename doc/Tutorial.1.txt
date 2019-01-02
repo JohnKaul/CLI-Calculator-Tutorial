@@ -10,12 +10,15 @@ You will learn:
 * Flexible directory structure.
 * Some basic tools used by all programmers.
 * Simple programming skills/methods.
-* Introduction into low level languages.
+* Introduction into low level languages and objects.
+
+WARNING:
+I said `simple calculator' but that's not really where this project will end up after we get coding; almost right away (in tutorial 6/7/8) we will be adding in a small scale parser. The calculator concept will offer simplified parsing concepts that should keep the code to a minimum -i.e. a calculator usually only handles numbers and what not so our parser doesn't have to be overly complicated but will still contain the basics behind all parsers.
 
 Directory structure:
 We need a flexible (professional) directory structure and the following is a copy/abridged/modification of the LLVM directory structure which is by far the best I have ever used/made.
 
-        Why is this important? Keeping things organized will help you understand how your compiler works later and how to add tools to your development.
+Why is this important? Keeping things organized will help you understand how your compiler works later and how to add tools to your development. And, this direcotry structure will support third party tools to be intergrated easly into your projects. 
 
 This is the directory structure we will be using.
 ...
