@@ -2,11 +2,154 @@ Tutorial 7: Choose or perish
 
 In the last 6 tutorials we did a lot of basic setup but now we can finally focus on some doing some coding!
 
-I mentioned that we'll pass arguments to our calculator and it will preform operations on them; this can be done many different ways and only a few methods will offer you the most flexablity when it comes time to add functionality later. Firstly, we need a method to parse out the arguments passed to our program so we can then do stuff. 
+I mentioned that we'll pass arguments to our calculator and it will preform operations on them; this can be done many different ways and only a few methods will offer you the most flexibility when it comes time to add functionality later. Firstly, we need a method to parse out the arguments passed to our program so we can then do stuff. 
 
-I am going to demonstrate a very simple method that we'll outgrow almost immediately. I will do this because this will be a great introduction into the C languages syntax.
-
+I am going to demonstrate a very simple method that we'll outgrow almost immediately. In fact you may notice gross inefficiencies but I will do this because this will be a great introduction into how your thinking will evolve with the C based language(s).
 
 int main(int argc, const char *argv[]) {
     return 0;
 } ///:~
+
+The following was taken from the Microsoft developers website.
+***
+Argument Definitions
+
+The arguments in the prototype
+
+      int main(int argc, const char *argv[]);
+
+allow convenient command-line parsing of arguments and, optionally,
+access to environment variables. The argument definitions are as
+follows:
+
+argc
+
+    An integer that contains the count of arguments that follow in
+    argv. The argc parameter is always greater than or equal to 1.
+
+argv
+
+    An array of null-terminated strings representing command-line
+    arguments entered by the user of the program. By convention,
+    argv[0] is the command with which the program is invoked, argv[1]
+    is the first command-line argument, and so on, until argv[argc],
+    which is always NULL. See Customizing Command Line Processing for
+    information on suppressing command-line processing.
+
+
+The first command-line argument is always argv[1].
+
+NOTE:
+
+    By convention, argv[0] is the command with which the program is
+    invoked. However, it is possible to spawn a process using
+    CreateProcess and if you use both the first and second arguments
+    (lpApplicationName and lpCommandLine), argv[0] may not be the
+    executable name; use GetModuleFileName to retrieve the executable
+    name, and its fully-qualified path.
+***
+
+So what that means is that "argv[]" is an array (or list if you wish) and that means we can just iterate the list looking for items in each slot.
+
+In the C based languages we use the FOR method for doing that. Here is what the FOR statement looks like:
+
+for ( <COUNTER> ; <SCOPE> ; <INCRIMENT AMOUNT>) {
+        <DO SOMETHING>
+}
+
+and since argv[] is essentally an "array" or "list of lists" (a "charcter string" is esentially a list of characters terminated with a NULL) we can access each piece and check it against something we're looking for. For example:
+
+for (int i = 0; i < argc; i++) {
+    if (argv[i] && strlen(argv[i]) > 1) {
+        if (argv[i][0] == '-' && argv[i][1] == 'a') {<DO SOMETHING>};
+        if (argv[i][0] == '-' && argv[i][1] == 'b') {<DO SOMETHING>};
+        if (argv[i][0] == '-' && argv[i][1] == 'c') {<DO SOMETHING>};
+        if (argv[i][0] == '-' && argv[i][1] == 'd') {<DO SOMETHING>};
+        // ...
+    }
+}
+
+However, as you can probably see, this is terribly ineffecient. 
+
+main.cpp
+***
+// --== INCLUDES ==-- //
+//
+#include <iostream>
+#include <cstring>
+
+// --== NAMESPACE ==-- //
+//
+using namespace std;
+
+// --== PROTOTYPES ==-- //
+//
+int findargument ( int argc, char *argv[], char* argument );
+
+
+// --== SUPPORT PROCEDURES ==-- //
+//
+
+//----------------------------------------------------------------------
+// findargument
+// This is a simple string locator
+//
+// ARGS
+//      int argc
+//      char argv[]
+//      char argument           :               argument to look for
+// RETURNS
+// Position of ARGUMENT in argv[]
+// otherwise -1 if ARGUMENT is not found
+// 
+//----------------------------------------------------------------------
+int findargument ( int argc, char *argv[], char* argument )/*{{{*/
+{
+        int i = 0;
+        int pos = -1;
+        
+        for ( i; argv[i] != NULL; i++ ) {
+
+                 if (strncmp(argv[i], argument, 2) == 0) {
+                          pos = i;
+                          break;
+                  }
+        }
+        return pos;
+}
+/*}}}*/
+
+int main ( int argc, char *argv[] )
+{
+         const char myArg[] = "-n";
+         // create a simple char array.
+         cout << "\nLooking for the ``" << myArg << "'' argument...\n";
+         // use that char array and prompt end user we 
+         // are looking for the string.
+
+         int arglocation = findargument(argc, argv, "-n");
+         // retrieve the position for the argument.
+
+         if (arglocation != -1) {
+                 // if the argument was found...
+                 cout << "\nFound it!";
+                 // prompt the user.
+                 //
+                 cout << "\nIt is in the " << arglocation << " position.\n\n";
+                 // report the position you found it in the arg list
+                 //
+         } else {
+
+                 // otherwise if the argument wasnt found, notify the user.
+                 cout << "\nThat argument does not seem to exist.\n";
+         }
+
+        return 0;
+        // done.
+} ///:~
+***
+
+The code above is a bad method for locating arguments because we'd have to search for every possible instance we'd want to support with our program. We need a more robust method for discovering what arguments have been passed to our program.
+
+We are going to build a simple tokenizer / parser to handle the argument list.
+
