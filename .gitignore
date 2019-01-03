@@ -1,0 +1,43 @@
+# Add files that you don't want pushed to the main repository here.
+# These files might be things like config files that store passwords
+# IDE folder/files and other user specific settings or data not needed
+# for the project.
+
+# A handy list of .gitignore templates for many languages is available at
+# this link -> https://github.com/github/gitignore
+
+# Visual Studio Code settings
+.vscode
+
+
+# ----- C/C++ files to ignore ----- #
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# ----- END C/C++ ignored files ----- #
