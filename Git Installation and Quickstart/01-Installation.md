@@ -1,4 +1,4 @@
-***01 - Git Installation
+##01 - Git Installation
 
 Head over to the Git website at https://git-scm.com/ and assuming you're on Windows you should see
 a `Download X.XX.X for Windows` where the X's are version numbers (2.20.1 at time of writing).
