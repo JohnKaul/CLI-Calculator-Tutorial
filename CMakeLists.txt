@@ -90,14 +90,14 @@ set( DLL_NAME
 
 # copy the LICENCE file to the build directory
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/doc/LICENSE.txt
-    ${EXECUTABLE_OUTPUT_PATH}/LICENSE.txt @ONLY
+    ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE
+    ${EXECUTABLE_OUTPUT_PATH}/LICENSE @ONLY
     )
 
 # copy the README file to the build directory
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/doc/ReadMe.txt
-    ${EXECUTABLE_OUTPUT_PATH}/ReadMe.txt @ONLY
+    ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    ${EXECUTABLE_OUTPUT_PATH}/README.md @ONLY
     )
 
 add_executable( ${PROJECT_NAME} ${MAIN_SRCS} ) 
