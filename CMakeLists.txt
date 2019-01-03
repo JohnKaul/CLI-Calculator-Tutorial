@@ -71,21 +71,6 @@ set( MAIN_SRCS
     ${SRCS_DIR}/main.cpp
     )
 
-# Sources for DLL
-set( DLL_SRCS
-    # ${DLL_SRCS_DIR}/foo.cpp
-    )
-
-# Headers for DLL
-set( DLL_HDRS
-    # ${DLL_SRCS_DIR}/foo.h
-    )
-
-# Name for the DLL
-set( DLL_NAME
-    Foo
-      )
-
 # ==---------------------------== #
 
 # copy the LICENCE file to the build directory
@@ -97,32 +82,25 @@ configure_file(
 # copy the README file to the build directory
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/README.md
-    ${EXECUTABLE_OUTPUT_PATH}/README.md @ONLY
+    ${EXECUTABLE_OUTPUT_PATH}/README.txt @ONLY
     )
 
 add_executable( ${PROJECT_NAME} ${MAIN_SRCS} ) 
 
 target_link_libraries( ${PROJECT_NAME}
     ${REQ_LIBRARIES}
-#     ${DLL_NAME}
     )
 
 install(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION ${EXECUTABLE_OUTPUT_PATH}
     )
 
-# install(TARGETS ${DLL_NAME}
-#     RUNTIME DESTINATION ${EXECUTABLE_OUTPUT_PATH}
-#     LIBRARY DESTINATION ${LIBRARY_OUTPUT_PATH}
-#     ARCHIVE DESTINATION ${LIBRARY_OUTPUT_PATH}
-#     )
-
 install(FILES
-    ${EXECUTABLE_OUTPUT_PATH}/LICENSE.txt
+    ${EXECUTABLE_OUTPUT_PATH}/LICENSE
     DESTINATION ${EXECUTABLE_OUTPUT_PATH}
     )
 
 install(FILES
-    ${EXECUTABLE_OUTPUT_PATH}/ReadMe.txt
+    ${EXECUTABLE_OUTPUT_PATH}/README.txt
     DESTINATION doc
     )
