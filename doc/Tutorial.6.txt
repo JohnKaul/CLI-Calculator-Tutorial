@@ -1,4 +1,4 @@
- Tutorial 6: Ready, Set, Go!
+Tutorial 6: Ready, Set, Go!
 
 Let's create a program.
 
@@ -14,11 +14,140 @@ Place the CMakeLists.txt file at the root of our project and the main.cpp in the
                         |       ------- main.cpp
                         ...
 
-At this point, if you are using Visual Studio, you can open the project with Visual Studio using the File->Open->Cmake option.
+CMakeLists.txt
+***
+cmake_minimum_required( VERSION 2.8 )
 
-We now have to create a License and a ReadME file. We will be using the BSD opensource license for this project and our ReadME will be a model of simplicity.
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        set( CMAKE_CXX_COMPILER "clang++" )
+        find_library (LIBSTDCXX NAMES stdc++)
+        add_compile_options(-stdlib=libstdc++)
+ENDIF()
 
-LICENSE.txt
+# Project name...
+project( CLICalculator )
+
+# ==---------------------------== #
+# Product version...
+# ==---------------------------== #
+
+# set( PROJECT_VERSION 1.0 )
+# ...or...
+set( VERSION_MAJOR 0 )
+set( VERSION_MINOR 4 )
+set( VERSION_PATCH 0 )
+
+# ==---------------------------== #
+# Directory setup
+# ==---------------------------== #
+set( SRCS_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/src )
+set( SRCS_INCLUDE_DIR ${SRCS_DIR}/include )
+set( DLL_SRCS_DIR ${SRCS_DIR}/lib )
+set( EXTRA_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../include )
+
+# EXECUTABLE_OUTPUT_PATH
+# -----------------------
+# set this variable to specify a common place where CMake should put all
+# executable files (instead of CMAKE_CURRENT_BINARY_DIR)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+
+# LIBRARY_OUTPUT_PATH
+# -----------------------
+# set this variable to specify a common place where CMake should put all
+# libraries (instead of CMAKE_CURRENT_BINARY_DIR)
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+
+# ==---------------------------== #
+# Misc.
+# ==---------------------------== #
+# enable warnings
+add_definitions( -DWall )
+
+# ==---------------------------== #
+# Search directories
+# ==---------------------------== #
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${EXECUTABLE_OUTPUT_PATH}
+    ${LIBRARY_OUTPUT_PATH}
+    ${SRCS_INCLUDE_DIR}
+    ${DLL_SRCS_DIR}
+    ${EXTRA_INCLUDE_DIR}
+    )
+
+# ==---------------------------== #
+# Source file list.
+# ==---------------------------== #
+set ( REQ_LIBRARIES
+        ${LIBSTDCXX}
+        )
+#---
+# Executables
+set( MAIN_SRCS
+    ${SRCS_DIR}/main.cpp
+    )
+
+# ==---------------------------== #
+
+# copy the LICENCE file to the build directory
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE
+    ${EXECUTABLE_OUTPUT_PATH}/LICENSE @ONLY
+    )
+
+# copy the README file to the build directory
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    ${EXECUTABLE_OUTPUT_PATH}/README.txt @ONLY
+    )
+
+add_executable( ${PROJECT_NAME} ${MAIN_SRCS} ) 
+
+target_link_libraries( ${PROJECT_NAME}
+    ${REQ_LIBRARIES}
+    )
+
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION ${EXECUTABLE_OUTPUT_PATH}
+    )
+
+install(FILES
+    ${EXECUTABLE_OUTPUT_PATH}/LICENSE
+    DESTINATION ${EXECUTABLE_OUTPUT_PATH}
+    )
+
+install(FILES
+    ${EXECUTABLE_OUTPUT_PATH}/README.txt
+    DESTINATION doc
+    )
+ 
+At this point, if you are using Visual Studio, you can open the project with Visual Studio using the File->Open->Cmake option but if you are using Xcode (on a mac), or another IDE on a *nix OS, or if you just wish to follow along using only the command line and your editor you need to preform one extra step; creating the "makefile".
+
+To `create the makefile' all we have to do is to create a directory to host the build and tell CMake to make the makefile based on the settings it finds for our confugutation (the compiler we have, and the OS settings, etc., etc.).
+
+$> cd <project folder>
+$> mkdir bin
+$> cd bin
+$> cmake .. -G Unix Makefile
+
+We now have to create a LICENSE and a Readme.md file at the root of our project. We will be using the BSD opensource license for this project and our Readme.md will be a model of simplicity.
+                ...
+                |
+                +------ CLI Calculator
+                        |
+                        +------ CMakeLists.txt
+                        |
+                        +------ LICENSE 
+                        |
+                        +------ Readme.md
+                        |
+                        +------ src
+                        |       |
+                        |       ------- main.cpp
+                        ...
+
+LICENSE
 ***
 Copyright (c)2018 John Kaul
 All rights reserved.
@@ -49,7 +178,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGE.
 ***
 
-ReadMe.txt
+ReadMe.md
 ***
 A comand line calculator used for a tutorial.
 ***
