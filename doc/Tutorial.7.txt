@@ -42,11 +42,7 @@ The first command-line argument is always argv[1].
 NOTE:
 
     By convention, argv[0] is the command with which the program is
-    invoked. However, it is possible to spawn a process using
-    CreateProcess and if you use both the first and second arguments
-    (lpApplicationName and lpCommandLine), argv[0] may not be the
-    executable name; use GetModuleFileName to retrieve the executable
-    name, and its fully-qualified path.
+    invoked.
 ***
 
 So what that means is that "argv[]" is an array (or list if you wish) and that means we can just iterate the list looking for items in each slot.
