@@ -103,3 +103,16 @@ configure_file(
     )
 
 add_executable( ${PROJECT_NAME} ${MAIN_SRCS} ) 
+
+
+This should be very readable but I'll attempt to hit on some of the higher level points for you to focus on.
+
+Comments in a CMake file are denoted with a hash ('#') symbol.
+The first few lines are basic CMake setup; we define that we require at least CMake version XXX to run. The next line is the project name we have chosen for this project (also the name of our binary later). 
+Next we start to get into some of the more interesting parts; we define a variable for use later.
+
+"set( PROJECT_VERSION 1.0 )" is actually defining a variable called "PROJECT_VERSION". This variable can be used later with a few extra characters appended to it; if we want to use that varaible we use the string: "${PROJECT_VERSION}". 
+
+Next we start telling CMake where/what our directory structure is. This is very important for us! We can acutally organize our files in any location that make sense to *us*--not an IDE-. This is also where true power of our super awesome directory structure comes into play. We currently have a spot for third party tools and APIs and we just tell CMake where those are located relative to our current directory. As this point you should realize a minor point, this means that other people would need this exact directory structure to build this program and sofar, that is correct but that isn't necessarly the case later when we get into more advanced CMake. For example, if our program required a popular third party API we could tell CMake to find it on the users machine or even prompt them to set a setting (or even go fetch it from the internet--but that isn't very nice so we won't be touching on that). 
+
+We also preform a neat little trick here with our LICENSE and README file. We copy the files to our binary folder. We do this because I wanted to introduce a very cool feature to you right away. The "@ONLY" part of those statements is a neat trick where variables, in these files, of the form @VAR@ will be replaced (${VAR} will be ignored). 
