@@ -191,29 +191,44 @@ It is good pratice to have a standard (tepmplate) commit style.
         I like to prefix my commit statements with the file(s) I am commiting.
         -e.g. "main.cpp: Fixed spelling error."
 
-So, after you saved each file (License and the ReadMe) Visual studio should warn you that you have new commits to make. Make a comment -i.e. "Initial commit." and commit each. Once that is done we can now add our main program; add this in the src directory add/commit the file to the git repo (you should now have made three commits).
+So, after you saved each file (License and the ReadMe) Visual studio should warn you that you have new commits to make. Make a comment -i.e. "Initial commit." and commit each file (one at a time please). Once that is done we can now add our main program; add this in the src directory add/commit the file to the git repo (you should now have made three commits).
+
+NOTE: I typically use git on the command line and I thought I'd show you how I would preform the above so you can see it. You can still use your IDE if that make you more comfortable but you should see all the steps for your reference.
+
+With a command line open at the root of our project folder:
+$> git add LICENCE
+$> git commit -m "LICENSE: Initial commit."
+$> git add Readme
+$> git commit -m "Readme: Initial commit."
+
+What you can see from above is that I add/commit each file one at a time. I do this so my "log" is clean and clear as to what I changed when so if I ever have to roll back to a previous change I can pinpoint the locaiton in time when I need.
+
+The other quirk you'll notice is my prefixing of the file name to the commit message. This is also for my `logs'. I like to know what files changed when, and this is a great visual aid formyself later.
+
+Back to the setup.
+
+Create/Open the main.cpp file with the following contents.
 
 main.cpp
 ***
-// File Last Updated: 12.17.18 13:21:19
+// File Last Updated: <DATE> 
 //
 //: CLI-Calculator
 //
-// BY  : John Kaul
+// BY  : <YOUR NAME>
+
 #include <iostream>
 #include <cstdlib>
 
 //----------------------------------------------------------------------
 // Main - CLI-Calculator
 // This is a simple command line calculator tool built durring a tutorial.
-//
-// ARGS
-//      <ARG 1>     :       <ARG 1 DESCRIPTION>
 //----------------------------------------------------------------------
-
 int main(int argc, const char *argv[]) {
     return 0;
 } ///:~
 ***
+
+Commit the file to Git.
 
 Build the program.
