@@ -16,28 +16,23 @@ Workflow:
 I won't get into the different types of workflow methods at this time but I will guide these lessons down a proper path for you to expand upon as you get more comfortable with using Git.
 
 First steps.
-The first step is #1 above in our overview so please pick a place on your harddrive to host repositories. 
+The first step is #1 above in our overview so please pick a place on your harddrive to host repositories. We'll call this a "repository store" (a place to store repositories).
 
-I am a Unix user so my “home directory” is equivalent to the “My Documents” folder in MS Windows and this where I choose to create a folder to host all of my Git repositories. This location is not to be confused with our project direcory where we host our projects. We will never be navigating into this folder--in fact you wouldnt be able to make heads or tails of the files in the directories once we get set up; think of this folder like a “junk drawer” where we place all of our project repositories in. 
+I am a Unix user so my "home directory" is equivalent to the "My Documents" folder in MS Windows and this where I choose to create a folder to host all of my Git repositories. This location is not to be confused with our project direcory where we host our projects. We will never be navigating into this `repository store' folder--in fact you wouldnt be able to make heads or tails of the files in the directories once we get set up (this folder will contain a bunch of folders and files you wont be able to make heads or tails of).  The location of my `repository store' is in my `home directory' and called somthing like: ".git-repositories" (the DOT at the begining tells Unix to hide the directory from normal view and this will not work in MS Windows). I will assume you do not already have a `repository store' folder so we can create this folder, at any location and name you choose; it is a simple/normal folder.
 
-This is an example of the workflow methods I was mentioned above, in that this `junk drawer' is a folder you can backup quickly and easily. This folder will be essentailly a database in raw form, from which many copies of your project can be made. Also, many IDEs (Visual Studio as well) have Git intergration and some have even made the ussage of Git overly complicated so I want to you to at least use the command line for the first phases of setting up your Git repository. After we get the initial repository set up you can--although it will be more difficult--switch to your IDE's git interface.
-
-The location of my "repository store" is in my `home directory' and called somthing like: ".git-repositories" (the DOT at the begining tells Unix to hide the directory from normal view and this will not work in MS Windows). I will assume you do not already have a `repository store' folder so we can create this folder, at any location and name you choose; it is a simple/normal folder.
-
-Once you have that folder created I'll need you to open a command prompt (shell for those *nix users) and navigate to that location.
+I want to you to at least use the command line for the first phases of setting up your Git repository. After we get the initial repository set up you can switch to your IDE's git interface to do the `typical workflow steps' (items 3 & 4 above). So, please pick a spot to hold a folder called "git-repositories" and create it--choose a spot that gets backed up ("C:\Users\Public\git-repositories\" or "C:\Users\<you>\git-repositores\" maybe). Once you have that folder created I'll need you to open a command prompt (shell for those *nix users) and navigate to that location.
     You "change directories" with the CD command: $> cd <location>
 
 Now that we are inside that `repository store' directory we can create a new project. Let's call it: CLI-Calculator. We create the directory with the MKDIR command: $> mkdir CLI-Calculator
     $> mkdir CLI-Calculator
     $> cd CLI-Calculator
 
-Let's create a "bare git repository" (feel free to google that).
+Let's create a "bare git repository" (feel free to google that). The short version is: a `bare repository' is better for this `store'. 
     $> git init --bare .
 
-Since we have the command line (shell) open...
+Since we have the command line (shell) open I'd like to show you how I'd normaly continue--with the command line open-. -i.e. I'm asking you to please continue using the command line for a few more steps.
     $> cd <location>\<to>\<programming>\<direcotry>
     $> git clone <repository store location>\CLI-Calculator
     $> cd CLI-Calculator
     $> mkdir bin doc src
 With these few commands we just cloned the project into our project working directory from our `repository store' and created a folder for us to start adding our code to. 
-
