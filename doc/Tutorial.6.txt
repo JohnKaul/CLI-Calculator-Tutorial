@@ -232,3 +232,142 @@ int main(int argc, const char *argv[]) {
 Commit the file to Git.
 
 Build the program.
+
+After you've made the build you may have notied that there is a few more files--especially the BIN folder--wating to be commited to Git; we don't commit things like executables or objects to git because they are always being compiled new. What we need now is a method to tell Git to ignore certain files and/or folders. This is done with a ".gitignore" file at the root of the project. 
+
+                ...
+                |
+                +------ CLI Calculator
+                        |
+                        +------ CMakeLists.txt
+                        |
+                        +------ .gitignore
+                        |
+                        +------ src
+                        |       |
+                        |       ------- main.cpp
+                        ...
+
+Below is a good generic .gitignore file for you. You may find others on the internet--which is perfectly fine--but this is a trimed version of my standard .gitignore file which I've cribbed, cobbled, and appended over the years. With this file in place, git will ignore most of the stuff that is unnecessary to commit.
+
+# Object files
+##############################
+*.o
+*.ko
+
+# Libraries
+##############################
+*.com
+*.lib
+*.a
+
+# Shared objects
+##############################
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+##############################
+*.exe
+*.out
+*.app
+
+# Packages
+##############################
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Packing-only formats
+##############################
+*.iso
+*.tar
+
+# Package management formats
+##############################
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+
+# Logs and databases
+##############################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+##############################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# C++ objects and libs
+##############################
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# CMake
+###############################
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# Local stuff
+# This section is devoted to this project
+##############################
+bin/*
+src/etc/*
+mingw32*
+*txt.user
+tags
+
+If you look over this file, you may notice that I keep a section at the end for "local stuff", this section is at the end of this list for several reasons (I'm talking about this to introduce you to some neuances).
+1. The first reson being that I can quickly add items to this list while I'm in the command line (where I spend most of my time) with a simple command:
+        $> echo <WHATEVER> >> .gitignore
+2. The second being that I can quickly see what is in my list with a simple call to CAT (`cat' will print the file contents to the command line). 
+        $> cat .gitignore
+
+The second item listed above is something to take a closer look at because it is a small adaption to utilize tools already in place. -i.e. people often talk about "proper syntax formatting"--something I'm sure will come up for you when we start developing more code in the next few lessons--and I'd like to show you some of the reasons why I choose the coding style I chooose.
+
+Searching or finding is a task often done--on larger programs especially--and by adopting a certain code style I've made my searches a little easier to do. Meaning that, often you may search files looking for bits of code or functions. I would preform this search with my text editor or the tool called GREP (both return searches similar) and I'd preform this on the command line.
+
+        $> grep -r 'main' *
+
+which may or not return a bunch of text for me to sift through. This should be similar no matter what tool you use to search -i.e. it returns a binch of stuff for you to hunt and peck through. 
+
+Below is an example search return when I search for 'main'. As you can see if I knew I was looking for a function definition I could easy determine wich was a function def by the opening brace. And this is the point I am trying to make; often times people will make a syntax rule like "curly braces are always on a line of their own.". These rules are fine, everyone should be comfortable with their code, but often times people may overlook the nuances of their tools at hand; if you're just getting started with the C based languages, spend some time using one of the default syntax standards for awhile before you make snap judgments.
+
+bin/Makefile:.PHONY : src/main.cpp.s
+bin/Makefile:	@echo "... src/main.o"
+bin/Makefile:	@echo "... src/main.i"
+bin/Makefile:	@echo "... src/main.s"
+src/main.cpp: int main(int argc, const char *argv[]) {
+
+The style I use is very close to the 1TBS or the BSD KBS styles. You can read this page for more infomation on coding styles:
+
+https://en.wikipedia.org/wiki/Indentation_style
